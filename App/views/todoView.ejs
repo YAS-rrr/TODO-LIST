@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head><title>Utenti</title></head>
+<body>
+  <h1>Lista Utenti</h1>
+  <form action="/users" method="POST">
+    <input type="text" name="titolo" placeholder="titolo" required>
+    <input type="text" name="descrizione" placeholder="Descrizione" required>
+    
+    <button type="submit">Aggiungi</button>
+    
+  </form>
+  <ul>
+    <% users.forEach(user => { %>
+      <li>
+    <%= user.titolo %> - <%= user.descrizione %> 
+        <form action="/users/restock/<%= user.id %>" method="POST" style="display:inline;">
+          <button type="submit">modifica</button>
+        </form>
+        <form action="/users/delete/<%= user.id %>" method="POST" style="display:inline;">
+          <button type="submit">Elimina</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+  <a href="/">Torna alla home</a>
+</body>
+</html>
