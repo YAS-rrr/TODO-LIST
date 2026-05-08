@@ -1,8 +1,12 @@
-// app/controllers/todoController.js
-import { findAll, create, findById, update, deleteTodo } from '../models/todoModel.js';
+import { findAll, create, findById, update, deleteTodo as deleteTodoModel } from '../models/todoModel.js';
 
 const home = (req, res) => {
-  res.send('Benvenuto nella Todo List!');
+  res.render('index'); // Renderizza app/views/index.ejs
+};
+
+const todoView = (req, res) => {
+  const todos = findAll();
+  res.render('todoView', { todos }); // Passa i dati alla view
 };
 
 const listTodos = (req, res) => {
@@ -29,8 +33,8 @@ const updateTodo = (req, res) => {
 
 const deleteTodo = (req, res) => {
   const { id } = req.params;
-  deleteTodo(id);
+  deleteTodoModel(id);
   res.json({ message: 'Todo deleted successfully' });
 };
 
-export { home, listTodos, createTodo, updateTodo, deleteTodo };
+export { home, todoView, listTodos, createTodo, updateTodo, deleteTodo };

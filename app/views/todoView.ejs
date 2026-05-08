@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gestione Todo</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+    
+    <form id="todo-form">
+        <input type="text" id="title" placeholder="Titolo" required>
+        <input type="text" id="description" placeholder="Descrizione" required>
+        <button type="submit">Aggiungi</button>
+    </form>
+    
+    <ul id="todo-list">
+        <% todos.forEach(todo => { %>
+            <li>
+                <strong><%= todo.title %></strong> - <%= todo.description %>
+                <button onclick="deleteTodo(<%= todo.id %>)">Elimina</button>
+            </li>
+        <% }); %>
+    </ul>
+    
+    <br>
+    <a href="/">Torna alla Home</a>
+
+    <script>
+        // Caricamento iniziale (già renderizzato dal server, ma per le operazioni AJAX)
+        async function addTodo(title, description) {
+            const res = await fetch('/api/todos', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({title, description})
+            });
+            if (res.ok) location.reload();
+        }
+        
+        async function deleteTodo(id) {
+            await fetch(`/api/todos/${id}`, {method: 'DELETE'});
+            location.reload();
+        }
+        
+        document.getElementById('todo-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+            addTodo(title, description);
+        });
+    </script>
+</body>
+</html>

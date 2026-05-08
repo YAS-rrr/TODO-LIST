@@ -1,13 +1,15 @@
-// routes/todoRoutes.js
 import express from 'express';
 const router = express.Router();
-import { home, listTodos, createTodo, updateTodo, deleteTodo } from '../app/controllers/todoController.js';
+import { home, todoView, listTodos, createTodo, updateTodo, deleteTodo } from '../app/controllers/todoController.js';
 
-// Rotte
+// Rotte per le pagine EJS
 router.get('/', home);
-router.get('/todos', listTodos);
-router.post('/todos', createTodo);
-router.put('/todos/:id', updateTodo);      // modifica
-router.delete('/todos/:id', deleteTodo);   // elimina
+router.get('/todoView', todoView);
+
+// Rotte API
+router.get('/api/todos', listTodos);
+router.post('/api/todos', createTodo);
+router.put('/api/todos/:id', updateTodo);
+router.delete('/api/todos/:id', deleteTodo);
 
 export default router;

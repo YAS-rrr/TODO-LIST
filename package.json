@@ -2,7 +2,6 @@
   "name": "todo-list",
   "version": "1.0.0",
   "description": "",
-
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,12 +13,13 @@
   "keywords": [],
   "author": "yassin ouldib",
   "license": "ISC",
-    "type": "module",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/YAS-rrr/TODO-LIST/issues"
   },
   "homepage": "https://github.com/YAS-rrr/TODO-LIST#readme",
   "dependencies": {
+    "ejs": "^5.0.2",
     "express": "^5.2.1"
   }
 }
