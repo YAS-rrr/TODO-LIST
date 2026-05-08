@@ -17,6 +17,7 @@
             <li>
                 <strong><%= todo.title %></strong> - <%= todo.description %>
                 <button onclick="deleteTodo(<%= todo.id %>)">Elimina</button>
+                <button onclick="updateTodo(<%= todo.id %>)">Modifica</button>
             </li>
         <% }); %>
     </ul>

@@ -10,6 +10,7 @@ router.get('/todoView', todoView);
 router.get('/api/todos', listTodos);
 router.post('/api/todos', createTodo);
 router.put('/api/todos/:id', updateTodo);
+router.post('/todos/update/:id', updateTodo); 
 router.delete('/api/todos/:id', deleteTodo);
 
 export default router;
